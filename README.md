@@ -14,9 +14,6 @@ App was created at using:
 
 This project using json-server, in which stores products foods.
 
-## Demo
-You can check the website preview with **[this link]( https://ioverclocked.github.io/fitbook/ )**
-
 ## Authors
 
  * **Michał Osiatycki**
