@@ -1,6 +1,6 @@
 # FitBook
 
-This is web aplication, in which you can check and counter calories witch various food products.
+This is web aplication, in which you can check and counter calories from various food products.
 
 ## Technologies
 
@@ -12,7 +12,7 @@ App was created at using:
 
 ## Database
 
-This project using json-server, in which stores products foods.
+This project uses json-server, in which stores food products.
 
 ## Instalation and run
 
