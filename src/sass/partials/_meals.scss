@@ -1,0 +1,157 @@
+.meals {
+    position: relative;
+    h1 {
+        font-family: $font-family-title-section;
+        padding: 1rem 0 1rem 1.4rem;
+        font-size: 1.4em;
+        background: $bg-color-section;
+        color: $font-color-section;
+    }
+    background: url(../images/meal3.jpg) no-repeat center/cover fixed;
+    .meals-content {
+
+    }
+}
+
+.meal {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $bg-color-section;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    div:first-child {
+        flex: 0 1 70%;
+
+        i {
+            padding: 1rem;
+            color: $icon-color-meals;
+            transition: 0.5s;
+        }
+
+        span {
+            font-family: $font-family-meal;
+            color: $font-color-meals;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    }
+
+    div:nth-child(2) {
+        flex: 0 1 15%;
+
+        p {
+            font-family: $font-family-title-section;
+            font-size: 0.7rem;
+            text-align: center;
+
+            &:first-child {
+                color: $font-color-ingested;
+            }
+
+            &:last-child {
+                color: $icon-color-meals;
+            }
+        }
+    }
+
+    div:last-child {
+        flex: 0 1 15%;
+
+        i {
+            transition: 0.5s;
+            font-size: 1.2rem;
+            padding: 1rem;
+            color: $icon-color-toggle;
+        }
+    }
+
+    &:focus,
+    &:hover {
+        cursor: pointer;
+        & > div:first-child > i {
+            font-size: 2em;
+            text-shadow: 0 0 20px $icon-color-meals;
+        }
+        & > div:last-child > i {
+            color: $icon-color-meals;
+        }
+    }
+}
+
+@media (min-width: 720px) {
+    .meals {
+
+        background-color: $bg-color-section;
+
+        h1 {
+            margin: 0 auto;
+            padding: 1rem 0 1rem 9rem;
+            font-size: 3em;
+        }
+    }
+
+    .meals-content {
+        margin: 0 auto;
+    }
+    .meal {
+        max-width: 1000px;
+        margin: 0 auto;
+        height: 100px;
+
+        div:first-child {
+
+            i {
+                font-size: 3em;
+                padding: 1rem;
+                color: $icon-color-meals;
+                transition: 0.5s;
+            }
+
+            span {
+                font-family: $font-family-meal;
+                color: $font-color-meals;
+                font-size: 2.5em;
+                font-weight: bold;
+            }
+        }
+
+        div:nth-child(2) {
+
+            p {
+                font-size: 2rem;
+
+                &:first-child {
+                    color: $font-color-ingested;
+                }
+
+                &:last-child {
+                    color: $icon-color-meals;
+                }
+            }
+        }
+
+        div:last-child {
+
+            i {
+                transition: 0.5s;
+                font-size: 5rem;
+                padding: 1rem;
+                color: $icon-color-toggle;
+            }
+        }
+
+        &:focus,
+        &:hover {
+            cursor: pointer;
+            & > div:first-child > i {
+                font-size: 5em;
+                text-shadow: 0 0 20px $icon-color-meals;
+            }
+            & > div:last-child > i {
+                font-size: 6em;
+            }
+        }
+    }
+
+}

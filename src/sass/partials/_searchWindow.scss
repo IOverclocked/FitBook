@@ -1,0 +1,154 @@
+.search {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.search-content {
+    position: relative;
+    padding: 1em;
+    margin: 0 auto;
+    width: 80%;
+    background-color: #fff;
+    border-radius: 5px;
+
+    i {
+        transition: 0.2s;
+        border-radius: 50%;
+        background-color: #fff;
+        position: absolute;
+        top: -17px;
+        right: -20px;
+        color: $icon-color-meals;
+        float: right;
+        font-size: 2em;
+        box-shadow: 0.3em -0.2em 1em -6px $font-color-product;
+
+        &:hover {
+            cursor: pointer;
+            font-size: 2.1em;
+            text-shadow: 0 0 10px $icon-color-meals;
+        }
+
+    }
+
+    box-shadow: 0 0 2em $font-color-product;
+}
+
+form {
+    padding: 1em;
+    width: 100%;
+}
+
+input[type=text] {
+    padding: 0.5em;
+    border: 1px solid $font-color-meals;
+    outline: 0;
+    border-radius: 5px;
+    width: 80%;
+    &:focus {
+        box-shadow: 0 0 1em $font-color-meals;
+    }
+}
+
+input[type=submit] {
+    padding: 0.5em;
+    background-color: $font-color-meals;
+    border: 1px solid $font-color-meals;
+    outline: 0;
+    border-radius: 5px;
+    width: 20%;
+    &:hover, &:active {
+        cursor: pointer;
+        background-color: $btn-color-hover;
+    }
+}
+
+.search-results {
+    table {
+        @for $i from 3 to 6 {
+            td:nth-of-type(#{$i}),
+            th:nth-of-type(#{$i}) {
+                visibility: hidden;
+            }
+
+        }
+        td {
+            font-size: 1rem;
+            &:first-child {
+                width: 50%;
+                font-size: 1rem;
+
+                &:hover {
+                    cursor: pointer;
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 720px) {
+
+    .search-content {
+        width: 60%;
+        border-radius: 10px;
+
+        i {
+            top: -40px;
+            right: -45px;
+            font-size: 4em;
+
+            &:hover {
+                font-size: 5.1em;
+            }
+
+        }
+
+    }
+
+    form {
+        margin: 0 auto;
+        padding: 2em;
+        width: 100%;
+    }
+
+    input[type=submit],
+    input[type=text] {
+        font-size: 1.2em;
+        padding: 1em;
+    }
+
+    .search-results {
+        table {
+            border-collapse: collapse;
+
+
+            @for $i from 1 to 6 {
+                td:nth-of-type(#{$i}),
+                th:nth-of-type(#{$i}) {
+                    font-size: 2em;
+                    border: 1px solid $icon-color-meals;
+                    visibility: visible;
+                }
+                td:nth-of-type(#{$i}):hover {
+                        cursor: pointer;
+                        font-size: 3em;
+                }
+            }
+
+            th {
+                border: none;
+            }
+        }
+    }
+
+}

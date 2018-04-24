@@ -1,21 +1,83 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import {Header} from './components/header.jsx';
+import {Meals} from './components/meals.jsx';
+import {CounterMain} from './components/counterMain.jsx';
+import {Footer} from './components/footer.jsx';
+import 'animate.css';
+import './sass/main.css';
+
+const stateFitBook = () => {
+
+    let templatefitBook = [
+        {
+            "name": "Breakfast",
+            "products": [
+
+            ]
+        } , {
+            "name": "First Snack",
+            "products": [
+
+            ]
+        }, {
+            "name": "Lunch",
+            "products": [
+
+            ]
+        }, {
+            "name": "Second Snack",
+            "products": [
+
+            ]
+        }, {
+            "name": "Dinner",
+            "products": [
+
+            ]
+        }
+    ]
+
+    console.log(localStorage.getItem('fitBook'));
+
+    if(localStorage.getItem('fitBook') !== "undefined" && localStorage.getItem('fitBook') !== null) {
+        return JSON.parse(localStorage.getItem('fitBook'));
+    } else {
+        return templatefitBook;
+    }
+
+}
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            fitBook: stateFitBook()
+        }
+    }
+
+    saveProducts = (arr_obj) => {
+        this.setState({
+            fitBook: arr_obj
+        }, () => {
+            localStorage.setItem('fitBook', JSON.stringify(arr_obj));
+        })
+
+    }
+
+    downloadProducts = () => {
+        return JSON.parse(localStorage.getItem('fitBook'))
+    }
+
+    render() {
+
+        return (<div className="App">
+            <Header/>
+            <CounterMain fitBook={this.state.fitBook} />
+            <Meals saveProducts={this.saveProducts} fitBook={this.state.fitBook} />
+            <Footer />
+        </div>);
+    }
 }
 
 export default App;

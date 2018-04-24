@@ -1,0 +1,142 @@
+.slideup, .slidedown {
+    margin: 0 auto;
+    max-width: 1000px;
+    height: 0;
+    overflow-y: hidden;
+    -webkit-transition: height 0.5s ease-in-out;
+    -moz-transition: height 0.5s ease-in-out;
+    -o-transition: height 0.5s ease-in-out;
+    transition: height 0.5s ease-in-out;
+}
+
+.products {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    table {
+        width: 100%;
+
+        th, td {
+            text-align: center;
+            padding: 1em;
+        }
+
+        th {
+            font-family: $font-family-title-section;
+            font-size: 0.6rem;
+            color: $font-color-ingested;
+
+            &:nth-of-type(2) {
+                width: 50%;
+            }
+        }
+
+        td {
+            font-family: $font-family-title-section;
+            font-size: 0.8rem;
+            color: $font-color-product;
+
+            &:nth-of-type(1) {
+                font-size: 1.2rem;
+                padding: .5rem;
+                width: 20%;
+                color: $font-color-meals;
+                transition: .5s;
+
+                &:hover, &:active  {
+                    font-size: 1.4rem;
+                    color: $icon-color-meals;
+                    cursor: pointer;
+                    & ~ td {
+                        color: $icon-color-meals;
+                    }
+                }
+                &:hover:last-child {
+                    font-size: 1.2rem;
+                    cursor: default;
+                }
+            }
+        }
+
+        td.icon-plus {
+            &:hover, &:active  {
+                font-size: 1.4rem;
+                color: $icon-color-meals;
+                cursor: pointer;
+                & ~ td {
+                    border: none;
+                    font-size: 0.8rem;
+                    color: $font-color-product;
+                }
+            }
+        }
+
+
+        tr:last-child > td {
+            &:hover, &:active  {
+
+                cursor: default;
+            }
+        }
+        .summary {
+            td {
+                font-size: 1rem;
+                color: $icon-color-meals;
+            }
+
+        }
+    }
+}
+
+
+@media (min-width: 720px) {
+
+    .products {
+            max-width: 1000px;
+            margin: 0 auto;
+
+
+        table {
+            width: 100%;
+
+            th, td {
+                text-align: center;
+                padding: .5em;
+            }
+
+            th {
+                font-size: 1.5rem;
+                color: $font-color-product;
+            }
+
+            td {
+                font-size: 1.5rem;
+                color: $font-color-ingested;
+
+                &:nth-of-type(1) {
+                    font-size: 2rem;
+
+                    &:hover, &:active  {
+                        font-size: 3rem;
+                    }
+                    &:hover:last-child {
+                        font-size: 3rem;
+                    }
+                }
+            }
+
+            td.icon-plus {
+                &:hover, &:active  {
+                    font-size: 3rem;
+                }
+            }
+
+            .summary {
+                td {
+                    font-size: 2rem;
+                }
+
+            }
+        }
+    }
+
+}
