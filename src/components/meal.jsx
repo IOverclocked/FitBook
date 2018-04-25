@@ -11,8 +11,7 @@ class Meal extends Component {
             toggle: true,
             listAnime: "slideup",
             products: this.props.products,
-            height: 0,
-            fitBook: this.props.fitBook
+            height: 0
         }
     }
 
@@ -35,7 +34,7 @@ class Meal extends Component {
     }
 
     updateProductsAdd = (product) => {
-        const fitBook = this.state.fitBook;
+        const fitBook = this.props.fitBook;
 
         this.setState({
             products: [...this.state.products, product]
@@ -55,17 +54,17 @@ class Meal extends Component {
     }
 
     updateProductsDelete = (id, name) => {
-        let fitBook = this.state.fitBook;
+        let fitBook = this.props.fitBook;
         let arrTemp = this.state.products.filter((el, key) => key !== id)
 
         this.setState({
             products: arrTemp
         })
 
-        fitBook = this.state.fitBook.forEach(meal => {
-            meal.products = meal.products.filter(product => {
-                return product.name !== name
-            })
+        fitBook.forEach(meal => {
+            if(this.props.name === meal.name) {
+                meal.products = meal.products.filter((product, key) => key !== id)
+            }
         })
 
         //funkcja z App.js

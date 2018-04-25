@@ -37,8 +37,6 @@ const stateFitBook = () => {
         }
     ]
 
-    console.log(localStorage.getItem('fitBook'));
-
     if(localStorage.getItem('fitBook') !== "undefined" && localStorage.getItem('fitBook') !== null) {
         return JSON.parse(localStorage.getItem('fitBook'));
     } else {
@@ -54,6 +52,10 @@ class App extends Component {
         this.state = {
             fitBook: stateFitBook()
         }
+    }
+
+    componentDidMount() {
+        console.log("App.js: ", this.state.fitBook);
     }
 
     saveProducts = (arr_obj) => {

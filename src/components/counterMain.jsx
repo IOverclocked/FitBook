@@ -16,11 +16,12 @@ class CounterMain extends Component {
     }
 
     sum = () => {
+        
         let sumKcal = 0;
         let sumFat = 0;
         let sumCarbs = 0;
         let sumProtein = 0;
-        console.log(this.props.fitBook);
+
         this.state.fitBook.forEach(meal => {
             meal.products.forEach(product => {
                 sumKcal += product.kcal
