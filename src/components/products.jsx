@@ -50,7 +50,7 @@ class Products extends Component {
                 }
                 <table>
                     <thead>
-                        <tr><th></th><th>PRODUCTS</th><th>AMOUNT</th><th>FAT</th><th>CARBS</th><th>PROTEIN</th></tr>
+                        <tr><th></th><th>PRODUCTS</th><th>QUANTITY</th><th>FAT</th><th>CARBS</th><th>PROTEIN</th></tr>
                     </thead>
                     <tbody>
                     {
@@ -62,7 +62,7 @@ class Products extends Component {
                                     delete={this.delete}
                                     key={key}
                                     name={product.name}
-                                    amount={product.amount}
+                                    quantity={product.quantity}
                                     fat={product.fat}
                                     carbs={product.carbs}
                                     protein={product.protein}

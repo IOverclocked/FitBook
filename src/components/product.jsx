@@ -15,7 +15,7 @@ class Product extends Component {
             <tr key={this.props.id}>
                 <td onClick={this.handleClickDelete} className="icon-minus"></td>
                 <td>{this.props.name}</td>
-                <td>{this.props.amount}</td>
+                <td>{this.props.quantity}</td>
                 <td>{this.props.fat}</td>
                 <td>{this.props.carbs}</td>
                 <td>{this.props.protein}</td>

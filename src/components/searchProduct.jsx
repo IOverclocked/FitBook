@@ -8,7 +8,7 @@ class SearchProduct extends Component {
         this.state = {
             searchProducts: [],
             value: "",
-            amount: 0
+            quantity: 0
         }
     }
 
@@ -39,11 +39,11 @@ class SearchProduct extends Component {
         }
     }
 
-    exchangeAmount = (product, amount) => {
+    exchangeAmount = (product, quantity) => {
 
         for(let key in product) {
-            if(key !== "name" && key !== "amount") {
-                product[key] = Math.round((product[key] * (amount / 100)), 0);
+            if(key !== "name" && key !== "quantity") {
+                product[key] = Math.round((product[key] * (quantity / 100)), 0);
             }
         }
 
@@ -54,17 +54,17 @@ class SearchProduct extends Component {
 
         e.preventDefault();
 
-        let amount = this.state.amount;
+        let quantity = this.state.quantity;
 
-        if(amount !== 0) {
+        if(quantity !== 0) {
 
             for (let i = 0; i < this.state.searchProducts.length; i++) {
                 if(this.state.value === this.state.searchProducts[i].name) {
 
-                    let product = {...this.state.searchProducts[i], amount: Number(amount)};
+                    let product = {...this.state.searchProducts[i], quantity: Number(quantity)};
 
                     if(typeof this.props.updateProductsAdd === "function") {
-                        this.props.updateProductsAdd(this.exchangeAmount(product, amount));
+                        this.props.updateProductsAdd(this.exchangeAmount(product, quantity));
                     }
                     if(typeof this.props.closeWindow === "function") {
                         this.props.closeWindow();
@@ -82,12 +82,12 @@ class SearchProduct extends Component {
 
     }
 
-    handleAmount = (e) => {
+    handleQuantity = (e) => {
 
-        let amount = e.target.value;
+        let quantity = e.target.value;
 
         this.setState({
-            amount
+            quantity
         })
 
     }
@@ -117,12 +117,12 @@ class SearchProduct extends Component {
                                 placeholder="Search product..."
                             />
                         </label>
-                        <label for="amount">
+                        <label for="quantity">
                             <input
-                                onChange={this.handleAmount}
+                                onChange={this.handleQuantity}
                                 type="number"
-                                name="amount"
-                                id="amount"
+                                name="quantity"
+                                id="quantity"
                             />
                         </label>
                         <label for="add">
