@@ -7,7 +7,8 @@ class SearchProduct extends Component {
 
         this.state = {
             searchProducts: [],
-            value: ""
+            value: "",
+            amount: 0
         }
     }
 
@@ -38,21 +39,55 @@ class SearchProduct extends Component {
         }
     }
 
+    exchangeAmount = (product, amount) => {
+
+        for(let key in product) {
+            product[key] = Math.round((product[key] * (amount / 100)), 0);
+        }
+
+        return product;
+    }
+
     handleClickAdd = (e) => {
+
         e.preventDefault();
 
-        for (let i = 0; i < this.state.searchProducts.length; i++) {
-            if(this.state.value === this.state.searchProducts[i].name) {
+        let amount = this.state.amount;
 
-                if(typeof this.props.updateProductsAdd === "function") {
-                    this.props.updateProductsAdd(this.state.searchProducts[i]);
-                }
-                if(typeof this.props.closeWindow === "function") {
-                    this.props.closeWindow();
-                }
+        if(amount !== 0) {
 
+            for (let i = 0; i < this.state.searchProducts.length; i++) {
+                if(this.state.value === this.state.searchProducts[i].name) {
+
+                    let product = this.state.searchProducts[i];
+
+                    if(typeof this.props.updateProductsAdd === "function") {
+                        this.props.updateProductsAdd(this.exchangeAmount(product, amount));
+                    }
+                    if(typeof this.props.closeWindow === "function") {
+                        this.props.closeWindow();
+                    }
+
+                }
             }
+
+        } else {
+
+            alert("DUPA");
+
         }
+
+
+    }
+
+    handleAmount = (e) => {
+
+        let amount = e.target.value;
+
+        this.setState({
+            amount
+        })
+
     }
 
     setName = (name) => {
@@ -78,6 +113,14 @@ class SearchProduct extends Component {
                                 value={this.state.value}
                                 onChange={this.handleSearch}
                                 placeholder="Search product..."
+                            />
+                        </label>
+                        <label for="amount">
+                            <input
+                                onChange={this.handleAmount}
+                                type="number"
+                                name="amount"
+                                id="amount"
                             />
                         </label>
                         <label for="add">
