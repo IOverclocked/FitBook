@@ -1,4 +1,5 @@
-.slideup, .slidedown {
+.slidedown,
+.slideup {
     margin: 0 auto;
     max-width: 1000px;
     height: 0;
@@ -12,10 +13,12 @@
 .products {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
+
     table {
         width: 100%;
 
-        th, td {
+        td,
+        th {
             text-align: center;
             padding: 1em;
         }
@@ -37,19 +40,22 @@
 
             &:nth-of-type(1) {
                 font-size: 1.2rem;
-                padding: .5rem;
+                padding: 0.5rem;
                 width: 20%;
                 color: $font-color-meals;
-                transition: .5s;
+                transition: 0.5s;
 
-                &:hover, &:active  {
+                &:active,
+                &:hover {
                     font-size: 1.4rem;
                     color: $icon-color-meals;
                     cursor: pointer;
+
                     & ~ td {
                         color: $icon-color-meals;
                     }
                 }
+
                 &:hover:last-child {
                     font-size: 1.2rem;
                     cursor: default;
@@ -58,10 +64,12 @@
         }
 
         td.icon-plus {
-            &:hover, &:active  {
+            &:active,
+            &:hover {
                 font-size: 1.4rem;
                 color: $icon-color-meals;
                 cursor: pointer;
+
                 & ~ td {
                     border: none;
                     font-size: 0.8rem;
@@ -70,37 +78,33 @@
             }
         }
 
-
         tr:last-child > td {
-            &:hover, &:active  {
-
+            &:active,
+            &:hover {
                 cursor: default;
             }
         }
+
         .summary {
             td {
                 font-size: 1rem;
                 color: $icon-color-meals;
             }
-
         }
     }
 }
-
-
 @media (min-width: 720px) {
-
     .products {
-            max-width: 1000px;
-            margin: 0 auto;
-
+        max-width: 1000px;
+        margin: 0 auto;
 
         table {
             width: 100%;
 
-            th, td {
+            td,
+            th {
                 text-align: center;
-                padding: .5em;
+                padding: 0.5em;
             }
 
             th {
@@ -115,9 +119,11 @@
                 &:nth-of-type(1) {
                     font-size: 2rem;
 
-                    &:hover, &:active  {
+                    &:active,
+                    &:hover {
                         font-size: 3rem;
                     }
+
                     &:hover:last-child {
                         font-size: 3rem;
                     }
@@ -125,7 +131,8 @@
             }
 
             td.icon-plus {
-                &:hover, &:active  {
+                &:active,
+                &:hover {
                     font-size: 3rem;
                 }
             }
@@ -134,9 +141,7 @@
                 td {
                     font-size: 2rem;
                 }
-
             }
         }
     }
-
 }

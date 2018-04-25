@@ -1,5 +1,6 @@
 .meals {
     position: relative;
+
     h1 {
         font-family: $font-family-title-section;
         padding: 1rem 0 1rem 1.4rem;
@@ -7,10 +8,9 @@
         background: $bg-color-section;
         color: $font-color-section;
     }
-    background: url(../images/meal3.jpg) no-repeat center/cover fixed;
-    .meals-content {
+    background: url("../images/meal3.jpg") no-repeat center/cover fixed;
 
-    }
+    .meals-content {}
 }
 
 .meal {
@@ -69,19 +69,19 @@
     &:focus,
     &:hover {
         cursor: pointer;
+
         & > div:first-child > i {
             font-size: 2em;
             text-shadow: 0 0 20px $icon-color-meals;
         }
+
         & > div:last-child > i {
             color: $icon-color-meals;
         }
     }
 }
-
 @media (min-width: 720px) {
     .meals {
-
         background-color: $bg-color-section;
 
         h1 {
@@ -94,13 +94,13 @@
     .meals-content {
         margin: 0 auto;
     }
+
     .meal {
         max-width: 1000px;
         margin: 0 auto;
         height: 100px;
 
         div:first-child {
-
             i {
                 font-size: 3em;
                 padding: 1rem;
@@ -117,7 +117,6 @@
         }
 
         div:nth-child(2) {
-
             p {
                 font-size: 2rem;
 
@@ -132,7 +131,6 @@
         }
 
         div:last-child {
-
             i {
                 transition: 0.5s;
                 font-size: 5rem;
@@ -144,14 +142,15 @@
         &:focus,
         &:hover {
             cursor: pointer;
+
             & > div:first-child > i {
                 font-size: 5em;
                 text-shadow: 0 0 20px $icon-color-meals;
             }
+
             & > div:last-child > i {
                 font-size: 6em;
             }
         }
     }
-
 }

@@ -1,5 +1,5 @@
 .header {
-    background: url(../images/fruits.jpg) no-repeat center/cover;
+    background: url("../images/fruits.jpg") no-repeat center/cover;
     background-attachment: fixed;
     height: 600px;
 
@@ -26,8 +26,8 @@
             .fit {
                 margin-left: 50px;
             }
-
         }
+
         i {
             background-color: rgba(0, 0, 0, 0.5);
             height: 100%;
@@ -35,7 +35,6 @@
         }
     }
 }
-
 @media (min-width: 720px) {
     .header {
         height: 1000px;
@@ -51,6 +50,7 @@
                 box-shadow: 0 0 2em rgba(0, 0, 0, 0.5);
                 background-color: rgba(0, 0, 0, 0.5);
             }
+
             i {
                 display: none;
             }

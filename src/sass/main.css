@@ -18,12 +18,12 @@
   font-style: normal; }
 
 * {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   box-sizing: border-box; }
 
 .header {
-  background: url(../images/fruits.jpg) no-repeat center/cover;
+  background: url("../images/fruits.jpg") no-repeat center/cover;
   background-attachment: fixed;
   height: 600px; }
   .header div {
@@ -68,7 +68,7 @@
 
 .meals {
   position: relative;
-  background: url(../images/meal3.jpg) no-repeat center/cover fixed; }
+  background: url("../images/meal3.jpg") no-repeat center/cover fixed; }
   .meals h1 {
     font-family: "Marmelad", sans-serif;
     padding: 1rem 0 1rem 1.4rem;
@@ -160,7 +160,8 @@
       .meal:focus > div:last-child > i, .meal:hover > div:last-child > i {
         font-size: 6em; } }
 
-.slideup, .slidedown {
+.slidedown,
+.slideup {
   margin: 0 auto;
   max-width: 1000px;
   height: 0;
@@ -175,7 +176,8 @@
   background-color: rgba(0, 0, 0, 0.7); }
   .products table {
     width: 100%; }
-    .products table th, .products table td {
+    .products table td,
+    .products table th {
       text-align: center;
       padding: 1em; }
     .products table th {
@@ -190,28 +192,28 @@
       color: #8b8b8b; }
       .products table td:nth-of-type(1) {
         font-size: 1.2rem;
-        padding: .5rem;
+        padding: 0.5rem;
         width: 20%;
         color: rgba(34, 176, 195, 0.7);
-        transition: .5s; }
-        .products table td:nth-of-type(1):hover, .products table td:nth-of-type(1):active {
+        transition: 0.5s; }
+        .products table td:nth-of-type(1):active, .products table td:nth-of-type(1):hover {
           font-size: 1.4rem;
           color: #e04211;
           cursor: pointer; }
-          .products table td:nth-of-type(1):hover ~ td, .products table td:nth-of-type(1):active ~ td {
+          .products table td:nth-of-type(1):active ~ td, .products table td:nth-of-type(1):hover ~ td {
             color: #e04211; }
         .products table td:nth-of-type(1):hover:last-child {
           font-size: 1.2rem;
           cursor: default; }
-    .products table td.icon-plus:hover, .products table td.icon-plus:active {
+    .products table td.icon-plus:active, .products table td.icon-plus:hover {
       font-size: 1.4rem;
       color: #e04211;
       cursor: pointer; }
-      .products table td.icon-plus:hover ~ td, .products table td.icon-plus:active ~ td {
+      .products table td.icon-plus:active ~ td, .products table td.icon-plus:hover ~ td {
         border: none;
         font-size: 0.8rem;
         color: #8b8b8b; }
-    .products table tr:last-child > td:hover, .products table tr:last-child > td:active {
+    .products table tr:last-child > td:active, .products table tr:last-child > td:hover {
       cursor: default; }
     .products table .summary td {
       font-size: 1rem;
@@ -223,9 +225,10 @@
     margin: 0 auto; }
     .products table {
       width: 100%; }
-      .products table th, .products table td {
+      .products table td,
+      .products table th {
         text-align: center;
-        padding: .5em; }
+        padding: 0.5em; }
       .products table th {
         font-size: 1.5rem;
         color: #8b8b8b; }
@@ -234,11 +237,11 @@
         color: #c8c8c8; }
         .products table td:nth-of-type(1) {
           font-size: 2rem; }
-          .products table td:nth-of-type(1):hover, .products table td:nth-of-type(1):active {
+          .products table td:nth-of-type(1):active, .products table td:nth-of-type(1):hover {
             font-size: 3rem; }
           .products table td:nth-of-type(1):hover:last-child {
             font-size: 3rem; }
-      .products table td.icon-plus:hover, .products table td.icon-plus:active {
+      .products table td.icon-plus:active, .products table td.icon-plus:hover {
         font-size: 3rem; }
       .products table .summary td {
         font-size: 2rem; } }
@@ -283,14 +286,21 @@ form {
   padding: 1em;
   width: 100%; }
 
+input[type=number],
 input[type=text] {
   padding: 0.5em;
   border: 1px solid rgba(34, 176, 195, 0.7);
   outline: 0;
-  border-radius: 5px;
-  width: 80%; }
+  border-radius: 5px; }
+  input[type=number]:focus,
   input[type=text]:focus {
     box-shadow: 0 0 1em rgba(34, 176, 195, 0.7); }
+
+input[type=text] {
+  width: 60%; }
+
+input[type=number] {
+  width: 20%; }
 
 input[type=submit] {
   padding: 0.5em;
@@ -299,7 +309,7 @@ input[type=submit] {
   outline: 0;
   border-radius: 5px;
   width: 20%; }
-  input[type=submit]:hover, input[type=submit]:active {
+  input[type=submit]:active, input[type=submit]:hover {
     cursor: pointer;
     background-color: rgba(34, 176, 195, 0.9); }
 
@@ -338,8 +348,7 @@ input[type=submit] {
     margin: 0 auto;
     padding: 2em;
     width: 100%; }
-  input[type=submit],
-  input[type=text] {
+  input {
     font-size: 1.2em;
     padding: 1em; }
   .search-results table {
@@ -398,7 +407,7 @@ input[type=submit] {
 
 @keyframes testing {
   from {
-    background: url(../images/4.jpg) no-repeat center/cover fixed; }
+    background: url("../images/4.jpg") no-repeat center/cover fixed; }
   to {
     background: url("../images/5.jpg") no-repeat center/cover fixed; } }
   .counterMain h1.title {
@@ -465,7 +474,7 @@ input[type=submit] {
             font-size: 2em; } }
 
 .footer {
-  background: url(../images/footer3.jpg) no-repeat center/cover fixed; }
+  background: url("../images/footer3.jpg") no-repeat center/cover fixed; }
   .footer .footer-opacity {
     border-top: 50px solid rgba(224, 224, 224, 0.74);
     background-color: rgba(0, 0, 0, 0.4); }
@@ -483,23 +492,25 @@ input[type=submit] {
       font-size: 1em; }
     .footer .footer-content ul {
       flex: 1;
-      padding: 0px;
-      margin: 0px;
+      padding: 0;
+      margin: 0;
       list-style-type: none; }
       .footer .footer-content ul li {
         text-align: right;
         padding: 0.2em; }
-      .footer .footer-content ul a:link, .footer .footer-content ul a:visited {
+      .footer .footer-content ul a:link,
+      .footer .footer-content ul a:visited {
         color: rgba(213, 213, 213, 0.9);
         text-decoration: none; }
-      .footer .footer-content ul a:hover, .footer .footer-content ul a:active {
+      .footer .footer-content ul a:active,
+      .footer .footer-content ul a:hover {
         color: #e04211; }
 
 @media (min-width: 720px) {
   .footer {
     font-family: "Marmelad", sans-serif;
     height: 500px;
-    background: url(../images/footer3.jpg) no-repeat center/cover fixed; }
+    background: url("../images/footer3.jpg") no-repeat center/cover fixed; }
     .footer .footer-opacity {
       border-top: 100px solid rgba(224, 224, 224, 0.74);
       height: 500px; }
