@@ -70,6 +70,7 @@ class CounterMacro extends Component {
             <tr className="summary">
                 <td></td>
                 <td> Summary: </td>
+                <td> </td>
                 <td className={`animated ${this.state.animeFat}`}>
                     <CountTo
                         onComplete={this.animeFat}

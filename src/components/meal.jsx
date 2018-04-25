@@ -35,7 +35,7 @@ class Meal extends Component {
 
     updateProductsAdd = (product) => {
         const fitBook = this.props.fitBook;
-
+        
         this.setState({
             products: [...this.state.products, product]
         })

@@ -50,7 +50,7 @@ class Products extends Component {
                 }
                 <table>
                     <thead>
-                        <tr><th></th><th>PRODUCTS</th><th>FAT</th><th>CARBS</th><th>PROTEIN</th></tr>
+                        <tr><th></th><th>PRODUCTS</th><th>AMOUNT</th><th>FAT</th><th>CARBS</th><th>PROTEIN</th></tr>
                     </thead>
                     <tbody>
                     {
@@ -62,6 +62,7 @@ class Products extends Component {
                                     delete={this.delete}
                                     key={key}
                                     name={product.name}
+                                    amount={product.amount}
                                     fat={product.fat}
                                     carbs={product.carbs}
                                     protein={product.protein}
@@ -71,10 +72,11 @@ class Products extends Component {
                     }
                     <tr>
                         <td onClick={this.handleClickAdd} className="icon-plus"></td>
-                        <td> -- </td>
-                        <td> -- </td>
-                        <td> -- </td>
-                        <td> -- </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
                     </tr>
                     <CounterMacro products={this.state.products}/>
                     </tbody>

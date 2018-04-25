@@ -42,7 +42,9 @@ class SearchProduct extends Component {
     exchangeAmount = (product, amount) => {
 
         for(let key in product) {
-            product[key] = Math.round((product[key] * (amount / 100)), 0);
+            if(key !== "name" && key !== "amount") {
+                product[key] = Math.round((product[key] * (amount / 100)), 0);
+            }
         }
 
         return product;
@@ -59,7 +61,7 @@ class SearchProduct extends Component {
             for (let i = 0; i < this.state.searchProducts.length; i++) {
                 if(this.state.value === this.state.searchProducts[i].name) {
 
-                    let product = this.state.searchProducts[i];
+                    let product = {...this.state.searchProducts[i], amount: Number(amount)};
 
                     if(typeof this.props.updateProductsAdd === "function") {
                         this.props.updateProductsAdd(this.exchangeAmount(product, amount));
