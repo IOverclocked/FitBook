@@ -166,9 +166,6 @@
   max-width: 1000px;
   height: 0;
   overflow-y: hidden;
-  -webkit-transition: height 0.5s ease-in-out;
-  -moz-transition: height 0.5s ease-in-out;
-  -o-transition: height 0.5s ease-in-out;
   transition: height 0.5s ease-in-out; }
 
 .products {
@@ -179,13 +176,11 @@
     .products table td,
     .products table th {
       text-align: center;
-      padding: 1em; }
+      padding: .5em; }
     .products table th {
       font-family: "Marmelad", sans-serif;
       font-size: 0.6rem;
       color: #c8c8c8; }
-      .products table th:nth-of-type(2) {
-        width: 50%; }
     .products table td {
       font-family: "Marmelad", sans-serif;
       font-size: 0.8rem;
@@ -193,20 +188,16 @@
       .products table td:nth-of-type(1) {
         font-size: 1.2rem;
         padding: 0.5rem;
-        width: 20%;
         color: rgba(34, 176, 195, 0.7);
         transition: 0.5s; }
         .products table td:nth-of-type(1):active, .products table td:nth-of-type(1):hover {
-          font-size: 1.4rem;
           color: #e04211;
           cursor: pointer; }
           .products table td:nth-of-type(1):active ~ td, .products table td:nth-of-type(1):hover ~ td {
             color: #e04211; }
         .products table td:nth-of-type(1):hover:last-child {
-          font-size: 1.2rem;
           cursor: default; }
     .products table td.icon-plus:active, .products table td.icon-plus:hover {
-      font-size: 1.4rem;
       color: #e04211;
       cursor: pointer; }
       .products table td.icon-plus:active ~ td, .products table td.icon-plus:hover ~ td {
@@ -315,8 +306,7 @@ input[type=submit] {
     background-color: rgba(34, 176, 195, 0.9); }
 
 .search-results table td:first-child {
-  width: 50%;
-  font-size: 1rem; }
+  font-size: 0.8rem; }
   .search-results table td:first-child:hover {
     cursor: pointer;
     font-size: 1.2em; }
@@ -354,14 +344,22 @@ input[type=submit] {
     padding: 1em; }
   .search-results table td,
   .search-results table th {
-    font-size: 2em; }
+    font-size: 1em; }
   .search-results table td:first-child {
-    font-size: 2em; }
+    font-size: 1em; }
   .search-results table td:first-child:hover {
-    cursor: pointer;
-    font-size: 3em; }
+    font-size: 1.1em; }
   .search-error h1 {
     font-size: 1.5em; } }
+
+@media (min-width: 1024px) {
+  .search-results table td,
+  .search-results table th {
+    font-size: 1.5em; }
+  .search-results table td:first-child {
+    font-size: 1.5em; }
+  .search-results table td:first-child:hover {
+    font-size: 1.6em; } }
 
 .counterMain {
   text-align: center;

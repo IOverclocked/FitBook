@@ -9,7 +9,7 @@ class Meal extends Component {
         this.state = {
             icon: 'icon-down',
             toggle: true,
-            listAnime: "slideup",
+            listAnime: "slideup products",
             products: this.props.products,
             height: 0
         }
@@ -21,7 +21,7 @@ class Meal extends Component {
             this.setState({
                 icon: 'icon-up',
                 toggle: false,
-                height: `${170 + this.state.products.length * 200}px`
+                height: "auto"
             })
         } else {
             this.setState({
@@ -35,7 +35,7 @@ class Meal extends Component {
 
     updateProductsAdd = (product) => {
         const fitBook = this.props.fitBook;
-        
+
         this.setState({
             products: [...this.state.products, product]
         })

@@ -4,9 +4,6 @@
     max-width: 1000px;
     height: 0;
     overflow-y: hidden;
-    -webkit-transition: height 0.5s ease-in-out;
-    -moz-transition: height 0.5s ease-in-out;
-    -o-transition: height 0.5s ease-in-out;
     transition: height 0.5s ease-in-out;
 }
 
@@ -20,34 +17,27 @@
         td,
         th {
             text-align: center;
-            padding: 1em;
+            padding: .5em;
         }
 
         th {
             font-family: $font-family-title-section;
             font-size: 0.6rem;
             color: $font-color-ingested;
-
-            &:nth-of-type(2) {
-                width: 50%;
-            }
         }
 
         td {
             font-family: $font-family-title-section;
             font-size: 0.8rem;
             color: $font-color-product;
-
             &:nth-of-type(1) {
                 font-size: 1.2rem;
                 padding: 0.5rem;
-                width: 20%;
                 color: $font-color-meals;
                 transition: 0.5s;
 
                 &:active,
                 &:hover {
-                    font-size: 1.4rem;
                     color: $icon-color-meals;
                     cursor: pointer;
 
@@ -57,7 +47,6 @@
                 }
 
                 &:hover:last-child {
-                    font-size: 1.2rem;
                     cursor: default;
                 }
             }
@@ -66,7 +55,6 @@
         td.icon-plus {
             &:active,
             &:hover {
-                font-size: 1.4rem;
                 color: $icon-color-meals;
                 cursor: pointer;
 

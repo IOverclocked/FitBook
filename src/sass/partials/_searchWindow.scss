@@ -84,10 +84,8 @@ input[type=submit] {
 .search-results {
     table {
         td {
-
             &:first-child {
-                width: 50%;
-                font-size: 1rem;
+                font-size: 0.8rem;
 
                 &:hover {
                     cursor: pointer;
@@ -114,6 +112,7 @@ input[type=submit] {
         text-align: center;
     }
 }
+
 @media (min-width: 720px) {
     .search-content {
         width: 60%;
@@ -145,16 +144,15 @@ input[type=submit] {
         table {
             td,
             th {
-                font-size: 2em;
+                font-size: 1em;
             }
 
             td:first-child {
-                font-size: 2em;
+                font-size: 1em;
             }
 
             td:first-child:hover {
-                cursor: pointer;
-                font-size: 3em;
+                font-size: 1.1em;
             }
         }
 
@@ -164,5 +162,25 @@ input[type=submit] {
         h1 {
             font-size: 1.5em;
         }
+    }
+}
+
+@media (min-width: 1024px) {
+    .search-results {
+        table {
+            td,
+            th {
+                font-size: 1.5em;
+            }
+
+            td:first-child {
+                font-size: 1.5em;
+            }
+
+            td:first-child:hover {
+                font-size: 1.6em;
+            }
+        }
+
     }
 }
