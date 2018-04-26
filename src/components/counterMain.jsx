@@ -14,9 +14,9 @@ class CounterMain extends Component {
             fitBook: this.props.fitBook,
         }
     }
-
+    
     sum = () => {
-        
+
         let sumKcal = 0;
         let sumFat = 0;
         let sumCarbs = 0;

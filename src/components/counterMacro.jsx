@@ -13,10 +13,11 @@ class CounterMacro extends Component {
             animeFat: "",
             animeCarbs: "",
             animeProtein: "",
-            products: this.props.products
+            products: this.props.products // dane z Meals.jsx
         }
     }
 
+    //Sprawdzenie aktualnych danych z porzednimi
     static getDerivedStateFromProps(nextProps, prevState) {
         if(nextProps.products.length === prevState.products.length) {
             return null
@@ -28,6 +29,7 @@ class CounterMacro extends Component {
 
     }
 
+    //Zliczanie wszystkich macro dla jednego poiłku
     sumMacro = () => {
 
         let carbs = 0, fat = 0, protein = 0;
@@ -49,6 +51,7 @@ class CounterMacro extends Component {
 
     }
 
+    //Manipulacja animacją x3
     animeFat = () => {
         this.setState({
             animeFat: "flip",

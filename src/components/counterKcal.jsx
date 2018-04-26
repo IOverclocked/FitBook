@@ -11,10 +11,11 @@ class CounterKcal extends Component {
 
         this.state = {
             kcalAnime: "",
-            products: this.props.products,
+            products: this.props.products, //props z Melas.jsx
         }
     }
 
+    //Sprawdzenie stanu danych z poprzednimi
     static getDerivedStateFromProps(nextProps, prevState) {
         if(nextProps.products.length === prevState.products.length) {
             return null
@@ -26,6 +27,7 @@ class CounterKcal extends Component {
 
     }
 
+    //Zliczenie kalorii dla jednego posiłku
     sumKcal = () => {
 
         let sum = 0;
@@ -39,6 +41,7 @@ class CounterKcal extends Component {
         return sum;
     }
 
+    //Manipulacja animacją
     anime = () => {
 
 
