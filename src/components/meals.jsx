@@ -7,12 +7,13 @@ class Meals extends Component {
         super(props)
 
         this.state = {
-            fitBook: this.props.fitBook,
-            searchWindow: false,
+            fitBook: this.props.fitBook, //props z App.js
+            searchWindow: false, //przełącznik okna wyszukiwania
             mealName: ""
         }
     }
 
+    //Włączenie okna wyszukiwania produktów
     showSearchWindow = (mealName) => {
         this.setState({
             searchWindow: true,
@@ -20,25 +21,31 @@ class Meals extends Component {
         })
     }
 
+    //Zamykanie okna wyszukiwania produktów
     closeSearchWindow = () => {
         this.setState({
             searchWindow: false
         })
     }
 
+    //Dodanie produktu do bazy
     updateProductsAdd = (product) => {
-        const fitBook = this.props.fitBook;
+        const fitBook = this.state.fitBook; //Props z App.js
 
+        //dodanie produktu do wybranego posiłku
         fitBook.forEach(meal => {
             if(meal.name === this.state.mealName) {
                 meal.products.push(product);
             }
         })
 
+        //zapisanie w pamięci przeglądarki
+        //funkcja z App.js
         if(typeof this.props.saveProducts === "function") {
             this.props.saveProducts(fitBook);
         }
 
+        //zamknięcie okna wyszukiwania
         this.closeSearchWindow();
 
     }

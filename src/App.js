@@ -36,7 +36,7 @@ const stateFitBook = () => {
             ]
         }
     ]
-
+    
     if(localStorage.getItem('fitBook') !== "undefined" && localStorage.getItem('fitBook') !== null) {
         return JSON.parse(localStorage.getItem('fitBook'));
     } else {
@@ -54,10 +54,12 @@ class App extends Component {
         }
     }
 
+    //Sprawdzenie stanu bazy
     componentDidMount() {
         console.log("App.js: ", this.state.fitBook);
     }
 
+    //Zapisywanie do pamięci przeglądarki
     saveProducts = (arr_obj) => {
         this.setState({
             fitBook: arr_obj
@@ -67,6 +69,7 @@ class App extends Component {
 
     }
 
+    //Pobieranie danych z przeglądarki
     downloadProducts = () => {
         return JSON.parse(localStorage.getItem('fitBook'))
     }

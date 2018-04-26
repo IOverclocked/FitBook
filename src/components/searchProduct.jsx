@@ -7,14 +7,15 @@ class SearchProduct extends Component {
         super(props)
 
         this.state = {
-            searchProducts: [],
-            value: "",
-            quantity: "",
-            errorWindow: false,
-            errorMsg: ""
+            searchProducts: [], //tablicy wyszukanych produktów
+            value: "", //nazwa produktu
+            quantity: "", //ilość produktu
+            errorWindow: false, //przełącznik uruchamiania feedbacka
+            errorMsg: "" //treść feedback
         }
     }
 
+    //Pobieranie danych z json-server
     handleSearch = (e) => {
 
         let value = e.target.value;
@@ -28,6 +29,7 @@ class SearchProduct extends Component {
             return res.json()
         }).then( data => {
 
+            //przypisanie danych do zmiennej state
             if(this.state.value.length === 0) {
                 this.setState({
                     searchProducts: []
@@ -43,12 +45,14 @@ class SearchProduct extends Component {
 
     }
 
+    //Zdarzenie zamknięcia okna wyszukiwania
     handleClickCloseWindow = (e) => {
         if(typeof this.props.closeSearchWindow === "function") {
-            this.props.closeSearchWindow();
+            this.props.closeSearchWindow(); //Funkcja z Meals.jsx
         }
     }
 
+    //przeliczenie makroskłaników i kalorii z ilości produktu
     exchangeAmount = (product, quantity) => {
 
         for(let key in product) {
@@ -60,6 +64,7 @@ class SearchProduct extends Component {
         return product;
     }
 
+    //zwrócenie wiadomości po walidacji
     errorFeedback = (errorMsg) => {
 
         this.setState({
@@ -76,10 +81,12 @@ class SearchProduct extends Component {
 
     }
 
+    //reset timera
     componentWillUnmount() {
         clearTimeout(this.timer);
     }
 
+    //Zdarzenie dodania nowego produktu do listy
     handleClickAdd = (e) => {
 
         e.preventDefault();
@@ -87,10 +94,12 @@ class SearchProduct extends Component {
         let quantity = this.state.quantity;
         let value = this.state.value;
 
+        //Sprawdzenie czy pola nie są puste
         if(value.length === 0 && quantity.length === 0) {
 
             this.errorFeedback("You must complete all field");
 
+        //sprawdzenie czy została podana ilość
         } else if (quantity < 0 || quantity.length === 0) {
 
             this.errorFeedback("The quantity must be bigger than 0");
@@ -99,16 +108,17 @@ class SearchProduct extends Component {
 
             let tempControl = false;
 
+            //dodanie produktu do odpowieniego posiłku
             for (let i = 0; i < this.state.searchProducts.length; i++) {
                 if(value === this.state.searchProducts[i].name) {
 
                     let product = {...this.state.searchProducts[i], quantity: Number(quantity)};
 
                     if(typeof this.props.updateProductsAdd === "function") {
-                        this.props.updateProductsAdd(this.exchangeAmount(product, quantity));
+                        this.props.updateProductsAdd(this.exchangeAmount(product, quantity)); //Funkcja z Meals.jsx
                     }
                     if(typeof this.props.closeWindow === "function") {
-                        this.props.closeWindow();
+                        this.props.closeWindow(); //Funkcja z Meals.jsx
                     }
 
                     tempControl = true;
@@ -116,6 +126,7 @@ class SearchProduct extends Component {
                 }
             }
 
+            //walidacja poprawności nazwy produktu
             if(tempControl === false) {
                 this.errorFeedback("You must write correct name food product");
             }
@@ -125,6 +136,7 @@ class SearchProduct extends Component {
 
     }
 
+    //zdarzenie dla przypisania ilości
     handleQuantity = (e) => {
 
         let quantity = e.target.value;
@@ -135,6 +147,7 @@ class SearchProduct extends Component {
 
     }
 
+    //Przypisanie nazwy
     setName = (name) => {
         this.setState({
             value: name
@@ -180,6 +193,7 @@ class SearchProduct extends Component {
                     </form>
                     <div className="search-results">
                             {
+                                //sprawdzenie czy zostało coś znalezione
                                 (this.state.searchProducts.length > 0) &&
                                 <table>
                                     <thead>

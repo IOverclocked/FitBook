@@ -8,13 +8,14 @@ class Meal extends Component {
 
         this.state = {
             icon: 'icon-down',
-            toggle: true,
-            products: this.props.products,
-            height: "0",
-            anime: ""
+            toggle: true, //przełącznik
+            products: this.props.products, //props z Meals.jsx
+            height: "0", //wysokość okna dla posiłku
+            anime: "" //animacja
         }
     }
 
+    //Zdarzenie dla kliknięcia w panel posiłku
     handleClickToggle = (e) => {
 
         if(this.state.toggle) {
@@ -35,8 +36,9 @@ class Meal extends Component {
 
     }
 
+    //Usunięcie posiłku z listy
     updateProductsDelete = (id, name) => {
-        let fitBook = this.props.fitBook;
+        let fitBook = this.props.fitBook; //props z Melas.jsx
         let arrTemp = this.state.products.filter((el, key) => key !== id)
 
         this.setState({
@@ -49,9 +51,8 @@ class Meal extends Component {
             }
         })
 
-        //funkcja z App.js
         if(typeof this.props.saveProducts === "function") {
-            this.props.saveProducts(fitBook);
+            this.props.saveProducts(fitBook); //funkcja z App.js
         }
 
     }

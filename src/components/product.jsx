@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 
 class Product extends Component {
 
+    //Zdarzenie usunięcia produktu z listy
     handleClickDelete = () => {
 
         if(typeof this.props.updateProductsDelete === "function") {
-            this.props.updateProductsDelete(this.props.id, this.props.name);
+            this.props.updateProductsDelete(this.props.id, this.props.name); //Funkcja z Meal.jsx
         }
 
     }

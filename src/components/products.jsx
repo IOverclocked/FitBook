@@ -8,10 +8,11 @@ class Products extends Component {
         super(props)
 
         this.state = {
-            products: this.props.products,
+            products: this.props.products, //Props z Meals.jsx
         }
     }
 
+    //Sprawdzenie zmian w stanie z poprzednimi
     static getDerivedStateFromProps(nextProps, prevState) {
         if(nextProps.products.length === prevState.products.length) {
             return null
@@ -23,16 +24,11 @@ class Products extends Component {
 
     }
 
+    //Zdarzenie Włączenie okna wyszukiwania
     handleClickShowSearchWindow = (e) => {
         if(typeof this.props.showSearchWindow === "function") {
-            this.props.showSearchWindow(this.props.mealName);
+            this.props.showSearchWindow(this.props.mealName); //Funkcjia z Meals.jsx
         }
-    }
-
-    closeSearchWindow = () => {
-        this.setState({
-            searchWindow: false
-        })
     }
 
     render() {
@@ -50,7 +46,6 @@ class Products extends Component {
                                 <Product
                                     id={key}
                                     updateProductsDelete={this.props.updateProductsDelete}
-                                    delete={this.delete}
                                     key={key}
                                     name={product.name}
                                     quantity={product.quantity}

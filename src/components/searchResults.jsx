@@ -1,17 +1,11 @@
 import React, {Component} from 'react';
 
 class SearchResults extends Component {
-    constructor(props) {
-        super(props)
 
-        this.state = {
-            productsList: []
-        }
-    }
-
+    //zdarzenie dla kliknięcia w nazwę produktu
     handleSetName = (e) => {
         if(typeof this.props.setName === "function") {
-            this.props.setName(e.target.innerText);
+            this.props.setName(e.target.innerText); //Funkcja z SearchProduct.jsx
         }
     }
 
