@@ -78,14 +78,11 @@
             }
         }
 
-        tr:last-child > td {
+        .summary {
             &:active,
             &:hover {
                 cursor: default;
             }
-        }
-
-        .summary {
             td {
                 font-size: 1rem;
                 color: $icon-color-meals;

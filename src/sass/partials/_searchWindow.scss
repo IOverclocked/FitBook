@@ -13,6 +13,7 @@
 
 .search-content {
     position: relative;
+    z-index: 10;
     padding: 1em;
     margin: 0 auto;
     width: 80%;
@@ -82,15 +83,7 @@ input[type=submit] {
 
 .search-results {
     table {
-        @for $i from 3 to 6 {
-            td:nth-of-type(#{$i}),
-            th:nth-of-type(#{$i}) {
-                visibility: hidden;
-            }
-        }
-
         td {
-            font-size: 1rem;
 
             &:first-child {
                 width: 50%;
@@ -98,10 +91,27 @@ input[type=submit] {
 
                 &:hover {
                     cursor: pointer;
-                    font-size: 1em;
+                    font-size: 1.2em;
                 }
             }
         }
+    }
+}
+
+.search-error {
+    position: absolute;
+    left: 10%;
+    top: 5px;
+    right: 10%;
+    z-index: 20;
+    border-radius: 1em;
+
+    h1 {
+        color: $font-color-error;
+        background-color: rgba(255, 255, 255, 0);
+        padding: 0;
+        font-size: 0.6em;
+        text-align: center;
     }
 }
 @media (min-width: 720px) {
@@ -133,24 +143,26 @@ input[type=submit] {
 
     .search-results {
         table {
-            border-collapse: collapse;
-            @for $i from 1 to 6 {
-                td:nth-of-type(#{$i}),
-                th:nth-of-type(#{$i}) {
-                    font-size: 2em;
-                    border: 1px solid $icon-color-meals;
-                    visibility: visible;
-                }
-
-                td:nth-of-type(#{$i}):hover {
-                    cursor: pointer;
-                    font-size: 3em;
-                }
-            }
-
+            td,
             th {
-                border: none;
+                font-size: 2em;
             }
+
+            td:first-child {
+                font-size: 2em;
+            }
+
+            td:first-child:hover {
+                cursor: pointer;
+                font-size: 3em;
+            }
+        }
+
+    }
+
+    .search-error {
+        h1 {
+            font-size: 1.5em;
         }
     }
 }

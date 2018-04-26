@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {SearchResults} from './searchResults.jsx';
+import {ErrorWindow} from './errorWindow.jsx';
 
 class SearchProduct extends Component {
     constructor(props) {
@@ -8,7 +9,9 @@ class SearchProduct extends Component {
         this.state = {
             searchProducts: [],
             value: "",
-            quantity: 0
+            quantity: "",
+            errorWindow: false,
+            errorMsg: ""
         }
     }
 
@@ -21,13 +24,20 @@ class SearchProduct extends Component {
             value
         })
 
-        fetch(`http://localhost:3000/products?name_like=${value.trim()}`).then( res => {
+        fetch(`http://localhost:3000/products?name_like=${value}`).then( res => {
             return res.json()
         }).then( data => {
 
-            this.setState({
-                searchProducts: data
-            })
+            if(this.state.value.length === 0) {
+                this.setState({
+                    searchProducts: []
+                })
+            } else {
+                this.setState({
+                    searchProducts: data
+                })
+            }
+
 
         })
 
@@ -50,16 +60,47 @@ class SearchProduct extends Component {
         return product;
     }
 
+    errorFeedback = (errorMsg) => {
+
+        this.setState({
+            errorWindow: true,
+            errorMsg
+        })
+
+        this.timer = setTimeout(() => {
+            this.setState({
+                errorWindow: false,
+                errorMsg: ""
+            })
+        }, 2000)
+
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.timer);
+    }
+
     handleClickAdd = (e) => {
 
         e.preventDefault();
 
         let quantity = this.state.quantity;
+        let value = this.state.value;
 
-        if(quantity !== 0) {
+        if(value.length === 0 && quantity.length === 0) {
+
+            this.errorFeedback("You must complete all field");
+
+        } else if (quantity < 0 || quantity.length === 0) {
+
+            this.errorFeedback("The quantity must be bigger than 0");
+
+        } else {
+
+            let tempControl = false;
 
             for (let i = 0; i < this.state.searchProducts.length; i++) {
-                if(this.state.value === this.state.searchProducts[i].name) {
+                if(value === this.state.searchProducts[i].name) {
 
                     let product = {...this.state.searchProducts[i], quantity: Number(quantity)};
 
@@ -70,12 +111,14 @@ class SearchProduct extends Component {
                         this.props.closeWindow();
                     }
 
+                    tempControl = true;
+
                 }
             }
 
-        } else {
-
-            alert("DUPA");
+            if(tempControl === false) {
+                this.errorFeedback("You must write correct name food product");
+            }
 
         }
 
@@ -102,6 +145,7 @@ class SearchProduct extends Component {
         return (
             <div className="search">
                 <div className="search-content">
+                    { this.state.errorWindow && <ErrorWindow errorMsg={this.state.errorMsg}/>}
                     <i
                         onClick={this.props.closeWindow}
                         className="icon-close">
@@ -135,26 +179,29 @@ class SearchProduct extends Component {
 
                     </form>
                     <div className="search-results">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>PRODUCTS</th><th>KCAL</th><th>FAT</th><th>CARBS</th><th>PROTEIN</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    this.state.searchProducts.map(product => {
-                                        return (
-                                            <SearchResults
-                                                key={product.name}
-                                                product={product}
-                                                setName={this.setName}
-                                            />
-                                        )
-                                    })
-                                }
-                            </tbody>
-                        </table>
+                            {
+                                (this.state.searchProducts.length > 0) &&
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>PRODUCTS</th><th>KCAL</th><th>FAT</th><th>CARBS</th><th>PROTEIN</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            this.state.searchProducts.map(product => {
+                                                return (
+                                                    <SearchResults
+                                                        key={product.name}
+                                                        product={product}
+                                                        setName={this.setName}
+                                                    />
+                                                )
+                                            })
+                                        }
+                                    </tbody>
+                                </table>
+                            }
                     </div>
                 </div>
             </div>
