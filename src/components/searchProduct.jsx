@@ -43,9 +43,9 @@ class SearchProduct extends Component {
 
     }
 
-    handleCloseWindow = (e) => {
-        if(typeof this.props.closeWindow === "function") {
-            this.props.closeWindow();
+    handleClickCloseWindow = (e) => {
+        if(typeof this.props.closeSearchWindow === "function") {
+            this.props.closeSearchWindow();
         }
     }
 
@@ -147,7 +147,7 @@ class SearchProduct extends Component {
                 <div className="search-content">
                     { this.state.errorWindow && <ErrorWindow errorMsg={this.state.errorMsg}/>}
                     <i
-                        onClick={this.props.closeWindow}
+                        onClick={this.handleClickCloseWindow}
                         className="icon-close">
                     </i>
                     <form>

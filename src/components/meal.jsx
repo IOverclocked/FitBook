@@ -9,46 +9,28 @@ class Meal extends Component {
         this.state = {
             icon: 'icon-down',
             toggle: true,
-            listAnime: "slideup products",
             products: this.props.products,
-            height: 0
+            height: "0",
+            anime: ""
         }
     }
 
-    handleClick = (e) => {
+    handleClickToggle = (e) => {
 
         if(this.state.toggle) {
             this.setState({
                 icon: 'icon-up',
                 toggle: false,
-                height: "auto"
+                height: "600px",
+                anime: "flipInX"
             })
         } else {
             this.setState({
                 icon: 'icon-down',
                 toggle: true,
-                height: `0px`
+                height: '0',
+                anime: "flipOutX"
             })
-        }
-
-    }
-
-    updateProductsAdd = (product) => {
-        const fitBook = this.props.fitBook;
-
-        this.setState({
-            products: [...this.state.products, product]
-        })
-
-        fitBook.forEach(meal => {
-            if(this.props.name === meal.name) {
-                meal.products.push(product);
-            }
-        })
-
-        //funkcja z App.js
-        if(typeof this.props.saveProducts === "function") {
-            this.props.saveProducts(fitBook);
         }
 
     }
@@ -78,7 +60,7 @@ class Meal extends Component {
         return (
             <div className="meal-content">
 
-                <div onClick={e => this.handleClick(e)} className="meal">
+                <div onClick={this.handleClickToggle} className="meal">
 
                     <div>
                         <i className={this.props.icon}></i>
@@ -93,12 +75,13 @@ class Meal extends Component {
                     </div>
 
                 </div>
-                <div className="slideup" style={{ overflow: "auto", height: this.state.height}} >
+                <div className={`slider animated ${this.state.anime}`} style={{ maxHeight: this.state.height}} >
                     <Products
                         updateProductsDelete={this.updateProductsDelete}
-                        updateProductsAdd={this.updateProductsAdd}
                         mealName={this.props.name}
-                        products={this.state.products}/>
+                        products={this.state.products}
+                        showSearchWindow={this.props.showSearchWindow}
+                    />
                 </div>
 
             </div>

@@ -1,13 +1,46 @@
 import React, {Component} from 'react';
 import {Meal} from './meal.jsx';
+import {SearchProduct} from './searchProduct.jsx';
 
 class Meals extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            fitBook: this.props.fitBook
+            fitBook: this.props.fitBook,
+            searchWindow: false,
+            mealName: ""
         }
+    }
+
+    showSearchWindow = (mealName) => {
+        this.setState({
+            searchWindow: true,
+            mealName
+        })
+    }
+
+    closeSearchWindow = () => {
+        this.setState({
+            searchWindow: false
+        })
+    }
+
+    updateProductsAdd = (product) => {
+        const fitBook = this.props.fitBook;
+
+        fitBook.forEach(meal => {
+            if(meal.name === this.state.mealName) {
+                meal.products.push(product);
+            }
+        })
+
+        if(typeof this.props.saveProducts === "function") {
+            this.props.saveProducts(fitBook);
+        }
+
+        this.closeSearchWindow();
+
     }
 
     render() {
@@ -16,6 +49,13 @@ class Meals extends Component {
             <section className="meals">
                 <h1>Meals</h1>
                 <div className="meals-content">
+                    {
+                        (this.state.searchWindow) &&
+                        <SearchProduct
+                            closeSearchWindow={this.closeSearchWindow}
+                            updateProductsAdd={this.updateProductsAdd}
+                        />
+                    }
                     {
                         this.state.fitBook.map((meal, i) => {
                             return (
@@ -26,6 +66,7 @@ class Meals extends Component {
                                     products={meal.products}
                                     saveProducts={this.props.saveProducts}
                                     fitBook={this.state.fitBook}
+                                    showSearchWindow={this.showSearchWindow}
                                 />
                             )
                         })

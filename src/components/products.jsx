@@ -8,7 +8,6 @@ class Products extends Component {
         super(props)
 
         this.state = {
-            searchWindow: false,
             products: this.props.products,
         }
     }
@@ -24,10 +23,10 @@ class Products extends Component {
 
     }
 
-    handleClickAdd = (e) => {
-        this.setState({
-            searchWindow: true
-        })
+    handleClickShowSearchWindow = (e) => {
+        if(typeof this.props.showSearchWindow === "function") {
+            this.props.showSearchWindow(this.props.mealName);
+        }
     }
 
     closeSearchWindow = () => {
@@ -40,14 +39,6 @@ class Products extends Component {
 
         return (
             <div className="products">
-                {
-                    this.state.searchWindow &&
-                    <SearchProduct
-                        updateProductsAdd={this.props.updateProductsAdd}
-                        mealName={this.props.mealName}
-                        closeWindow={this.closeSearchWindow}
-                    />
-                }
                 <table>
                     <thead>
                         <tr><th></th><th>PRODUCTS</th><th>QUANTITY</th><th>FAT</th><th>CARBS</th><th>PROTEIN</th></tr>
@@ -71,7 +62,7 @@ class Products extends Component {
                         })
                     }
                     <tr>
-                        <td onClick={this.handleClickAdd} className="icon-plus"></td>
+                        <td onClick={this.handleClickShowSearchWindow} className="icon-plus"></td>
                         <td>  </td>
                         <td>  </td>
                         <td>  </td>
