@@ -53,16 +53,37 @@ class CounterMacro extends Component {
         this.setState({
             animeFat: "flip",
         })
+
+        this.timerAnimeFat = setTimeout(() => {
+            this.setState({
+                animeFat: ""
+            })
+        }, 1000);
     }
+
     animeCarbs = () => {
         this.setState({
             animeCarbs: "flip",
         })
+
+        this.timerAnimeCarbs = setTimeout(() => {
+            this.setState({
+                animeCarbs: ""
+            })
+        }, 1000);
     }
+
+
     animeProtein = () => {
         this.setState({
             animeProtein: "flip",
         })
+
+        this.timerAnimeProtein = setTimeout(() => {
+            this.setState({
+                animeProtein: ""
+            })
+        }, 1000);
     }
 
     render() {

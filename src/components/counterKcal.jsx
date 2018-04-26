@@ -41,11 +41,16 @@ class CounterKcal extends Component {
 
     anime = () => {
 
-        if(this.state.kcalAnime === "") {
+
+        this.setState({
+            kcalAnime: "wobble"
+        })
+
+        this.timer = setTimeout(() => {
             this.setState({
-                kcalAnime: "wobble",
+                kcalAnime: ""
             })
-        }
+        }, 1000);
 
     }
 
