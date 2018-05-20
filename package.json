@@ -2,7 +2,7 @@
     "name": "my-app",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://imię.github.io/fitbook",
+    "homepage": "https://ioverclocked.github.io/fitbook/",
     "dependencies": {
         "animate.css": "^3.6.1",
         "fetch": "^1.1.0",
