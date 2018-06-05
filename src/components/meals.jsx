@@ -30,12 +30,20 @@ class Meals extends Component {
 
     //Dodanie produktu do bazy
     updateProductsAdd = (product) => {
+
+        console.log("6.Produkt przeliczony:", product);
+
         const fitBook = this.state.fitBook; //Props z App.js
+
+        console.log("7.fitBook", fitBook);
 
         //dodanie produktu do wybranego posiłku
         fitBook.forEach(meal => {
+            console.log("8.Meal", meal);
             if(meal.name === this.state.mealName) {
+                console.log("9.Meal products", meal.products);
                 meal.products.push(product);
+                console.log("10.Meal products push", meal.products);
             }
         })
 
@@ -47,7 +55,6 @@ class Meals extends Component {
 
         //zamknięcie okna wyszukiwania
         this.closeSearchWindow();
-
     }
 
     render() {

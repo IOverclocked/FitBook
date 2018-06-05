@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {CounterMacro} from './counterMacro.jsx';
 import {Product} from './product.jsx';
-import {SearchProduct} from './searchProduct.jsx';
 
 class Products extends Component {
     constructor(props) {

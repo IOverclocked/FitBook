@@ -36,7 +36,7 @@ const stateFitBook = () => {
             ]
         }
     ]
-    
+
     if(localStorage.getItem('fitBook') !== "undefined" && localStorage.getItem('fitBook') !== null) {
         return JSON.parse(localStorage.getItem('fitBook'));
     } else {
@@ -60,11 +60,10 @@ class App extends Component {
     }
 
     //Zapisywanie do pamięci przeglądarki
-    saveProducts = (arr_obj) => {
-        this.setState({
-            fitBook: arr_obj
-        }, () => {
-            localStorage.setItem('fitBook', JSON.stringify(arr_obj));
+    saveProducts = (fitBook) => {
+
+        this.setState({ fitBook }, () => {
+            localStorage.setItem('fitBook', JSON.stringify(fitBook));
         })
 
     }

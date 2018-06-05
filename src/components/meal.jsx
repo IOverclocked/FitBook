@@ -38,8 +38,9 @@ class Meal extends Component {
 
     //Usunięcie posiłku z listy
     updateProductsDelete = (id, name) => {
+
         let fitBook = this.props.fitBook; //props z Melas.jsx
-        let arrTemp = this.state.products.filter((el, key) => key !== id)
+        let arrTemp = this.state.products.filter((el, key) => key !== id);
 
         this.setState({
             products: arrTemp
@@ -47,8 +48,9 @@ class Meal extends Component {
 
         fitBook.forEach(meal => {
             if(this.props.name === meal.name) {
-                meal.products = meal.products.filter((product, key) => key !== id)
+                meal.products = meal.products.filter((product, key) => key !== id);
             }
+
         })
 
         if(typeof this.props.saveProducts === "function") {
